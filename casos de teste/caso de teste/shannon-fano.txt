@@ -1,0 +1,88 @@
+Shannon-Fano Algorithm for Data Compression
+DATA COMPRESSION AND ITS TYPES
+Data Compression, also known as source coding, is the process of encoding or converting data in such a way that it consumes less memory space. Data compression reduces the number of resources required to store and transmit data.
+It can be done in two ways- lossless compression and lossy compression. Lossy compression reduces the size of data by removing unnecessary information, while there is no data loss in lossless compression.
+
+WHAT IS SHANNON FANO CODING?
+Shannon Fano Algorithm is an entropy encoding technique for lossless data compression of multimedia. Named after Claude Shannon and Robert Fano, it assigns a code to each symbol based on their probabilities of occurrence. It is a variable length encoding scheme, that is, the codes assigned to the symbols will be of varying length.
+
+HOW DOES IT WORK?
+The steps of the algorithm are as follows:
+
+1. Create a list of probabilities or frequency counts for the given set of symbols so that the relative frequency of occurrence of each symbol is known.
+2. Sort the list of symbols in decreasing order of probability, the most probable ones to the left and least probable to the right.
+3. Split the list into two parts, with the total probability of both the parts being as close to each other as possible.
+4. Assign the value 0 to the left part and 1 to the right part.
+5. Repeat the steps 3 and 4 for each part, until all the symbols are split into individual subgroups.
+The Shannon codes are considered accurate if the code of each symbol is unique.
+
+EXAMPLE:
+Given task is to construct Shannon codes for the given set of symbols using the Shannon-Fano lossless compression technique.
+Solution:
+
+Let P(x) be the probability of occurrence of symbol x:
+
+Upon arranging the symbols in decreasing order of probability:
+P(D) + P(B) = 0.30 + 0.2 = 0.58
+
+and,
+
+P(A) + P(C) + P(E) = 0.22 + 0.15 + 0.05 = 0.42
+
+And since thealmost equally split the table, the most is dividedit the blockquote table isblockquotento
+{D, B} and {A, C, E}
+
+and assign them the values 0 and 1 respectively.
+Now, in {D, B} group,
+P(D) = 0.30 and P(B) = 0.28
+
+which means that P(D)~P(B), so divide {D, B} into {D} and {B} and assign 0 to D and 1 to B.
+In {A, C, E} group,
+P(A) = 0.22 and P(C) + P(E) = 0.20
+So the group is divided into
+
+{A} and {C, E}
+
+and they are assigned values 0 and 1 respectively.
+
+
+
+
+In {C, E} group,
+P(C) = 0.15 and P(E) = 0.05
+
+So divide them into {C} and {E} and assign 0 to {C} and 1 to {E}
+Note: The splitting is now stopped as each symbol is separated now.
+
+
+
+The Shannon codes for the set of symbols are:
+As it can be seen, these are all unique and of varying lengths.
+
+Below is the implementation of the above approach:
+Output:
+Enter number of symbols    : 5
+Enter symbol 1 : A
+Enter symbol 2 : B
+Enter symbol 3 : C
+Enter symbol 4 : D
+Enter symbol 5 : E
+
+Enter probability of A : 0.22
+
+Enter probability of B : 0.28
+
+Enter probability of C : 0.15
+
+Enter probability of D : 0.3
+
+Enter probability of E : 0.05
+
+
+
+    Symbol    Probability    Code
+    D        0.3    00
+    B        0.28    01
+    A        0.22    10
+    C        0.15    110
+    E        0.05    111
